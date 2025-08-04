@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tiger Safari Visitors Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      background: white;
+      border-radius: 10px;
+      max-width: 500px;
+      margin: auto;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .visitor {
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #ddd;
+    }
+    .visitor:last-child {
+      border-bottom: none;
+    }
+    h3 {
+      color: #0077cc;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0 15px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button.add-btn {
+      background: #0077cc;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button.add-btn:hover {
+      background: #005fa3;
+    }
+    button.submit-btn {
+      background: green;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button.submit-btn:hover {
+      background: darkgreen;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div id="visitors-container">
+      <!-- Visitors will appear here -->
+    </div>
+    <button class="add-btn" onclick="addVisitor()">Add Visitor</button>
+    <button class="submit-btn" onclick="submitForm()">Submit All</button>
+  </div>
+
+  <script>
+    let visitorCount = 0;
+
+    function addVisitor() {
+      visitorCount++;
+      const container = document.getElementById('visitors-container');
+      const visitorDiv = document.createElement('div');
+      visitorDiv.className = 'visitor';
+      visitorDiv.innerHTML = `
+        <h3>Visitor #${visitorCount}</h3>
+        <input type="text" placeholder="Name" required />
+        <select>
+          <option value="">Select Gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+        <select>
+          <option value="">Select Nationality</option>
+          <option value="Indian">Indian</option>
+          <option value="Foreigner">Foreigner</option>
+        </select>
+        <select>
+          <option value="">Select ID Proof</option>
+          <option value="Aadhar Card">Aadhar Card</option>
+          <option value="Passport">Passport</option>
+          <option value="Driving License">Driving License</option>
+        </select>
+        <input type="text" placeholder="ID Number" required />
+        <input type="number" placeholder="Age" required />
+        <input type="file" />
+      `;
+      container.appendChild(visitorDiv);
+    }
+
+    // Add first visitor by default
+    addVisitor();
+
+    function submitForm() {
+      alert("Form submitted! (Dummy action)");
+    }
+  </script>
+
+</body>
+</html>
